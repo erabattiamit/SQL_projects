@@ -1,5 +1,5 @@
 
-select * from [dbo].[changes_fasoos]
+
 select * from [dbo].[driver]
 select * from [dbo].[driver_order]
 select * from [dbo].[ingredients]
@@ -55,7 +55,7 @@ then '0' else extra_items_included end as new_extra_items_included,order_date fr
  (select order_id from temp_driver_order where new_cancellation !=0))a group by chg_no_chg 
 
  --total rolls ordered for each hour of the day
- select hours_bucket,count(hours_bucket) from
+ select hours_bucket,count(hours_bucket)occurance from
  (select *,concat(cast(datepart(hour,order_date)as varchar),'-',cast(datepart(hour,order_date)+1 as varchar))hours_bucket  from customer_orders)a
  group by hours_bucket
 
